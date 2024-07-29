@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
+        if ( transform.position.x < -screenBounds.x)
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        {
+            GameObject.Destroy(gameObject);
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-speed);
+        }
     }
 }
